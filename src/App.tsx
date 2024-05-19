@@ -3,12 +3,18 @@ import Square from "./components/Square";
 
 export default function App() {
   const [squares, setSquares] = useState(Array(9).fill(null));
+  const [xNext, setxNext] = useState("X");
 
   const handleClick = (i: number) => {
+
     const nextSquares = squares.slice();
-    nextSquares[i] = "X";
+    if(nextSquares[i] !== null){
+      return;
+    }
+    nextSquares[i] = xNext;
     setSquares(nextSquares);
-    console.log(squares);
+    setxNext(xNext === "X" ? "O" : "X");
+    console.log(nextSquares[i])
   };
 
   return (
